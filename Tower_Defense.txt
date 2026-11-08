@@ -1,0 +1,459 @@
+# PROJECT: PROFESSIONAL 2D FANTASY TOWER DEFENSE GAME
+
+Act as a Senior Game Developer, Game Engine Architect, TypeScript Engineer, Performance Optimization Specialist, and UI/UX Designer.
+
+Your task is to design and develop a complete, production-quality, browser-based Tower Defense Game from scratch.
+
+Do not create just a static UI, prototype, or visual demonstration. Build a fully functional, playable game with real-time gameplay, animations, combat mechanics, progressive difficulty, and a scalable architecture.
+
+## 1. TECHNOLOGY STACK
+
+Use the following technologies:
+
+- React for UI components, menus, HUD, and controls.
+- TypeScript for the entire game architecture.
+- Vite for development and production builds.
+- PixiJS 8 for GPU-accelerated 2D game rendering.
+- HTML5 Canvas/WebGL through PixiJS.
+- Web Audio API for sound effects and music.
+- LocalStorage or IndexedDB for local settings and save data.
+- Web Workers where beneficial for background processing.
+
+The game must work without requiring a backend, API keys, or external services.
+
+## 2. VISUAL DESIGN AND GAME EXPERIENCE
+
+Use a premium fantasy kingdom theme.
+
+Visual direction:
+- Beautiful fantasy forest environment.
+- Winding dirt pathways through the battlefield.
+- Castle or kingdom base at the end of the path.
+- Rivers, bridges, grass, rocks, trees, and environmental decorations.
+- Detailed fantasy towers and enemy characters.
+- Colorful projectile trails, explosions, magic effects, and particles.
+- Professional strategy-game HUD.
+- Smooth animations and polished visual feedback.
+
+Use the previously established fantasy battlefield and game HUD reference as the visual direction.
+
+Create a visually rich battlefield, not a flat collection of colored rectangles.
+
+Use properly licensed assets, original generated assets, or procedural graphics. Do not depend on unavailable external image URLs.
+
+## 3. CORE GAMEPLAY
+
+Implement the following features:
+
+- Enemies spawn in waves.
+- Enemies automatically follow predefined paths.
+- Towers automatically identify and attack enemies within range.
+- Projectiles travel toward targets.
+- Collision detection applies damage.
+- Enemies die and reward the player with gold and score.
+- Enemies reaching the castle reduce base health.
+- Players place towers on valid build locations.
+- Players can select, upgrade, and sell towers.
+- Every tower has different abilities and statistics.
+- Every enemy type has different attributes and behavior.
+- Boss enemies have special mechanics.
+- Game progression becomes progressively more difficult.
+
+The game must be playable from the main menu through the final wave, including victory and game-over conditions.
+
+## 4. TOWER SYSTEM
+
+Implement at least four distinct tower types:
+
+### Archer Tower
+- Fast attack speed.
+- Single-target damage.
+- Critical hit chance.
+- Long-range targeting.
+
+### Cannon Tower
+- Slow firing speed.
+- High damage.
+- Area-of-effect explosions.
+- Effective against groups.
+
+### Mage Tower
+- Magical projectile attacks.
+- High damage.
+- Armor penetration.
+- Magical visual effects.
+
+### Frost Tower
+- Slows enemy movement.
+- Crowd-control ability.
+- Upgradeable slow duration and effectiveness.
+
+Each tower must have:
+- Unique visual appearance.
+- Unique attack animation.
+- Different damage, range, and attack speed.
+- Individual upgrade paths.
+- Multiple upgrade levels.
+- Dynamic statistics.
+- Upgrade costs.
+- Selling value.
+- Selection and information panel.
+
+Design the tower architecture so additional tower types can be added without rewriting the engine.
+
+## 5. ENEMY SYSTEM
+
+Implement at least five enemy types:
+
+1. Goblin: Fast movement and low health.
+2. Orc: Slow movement and high health.
+3. Armored Knight: High physical defense.
+4. Wyvern: Flying enemy with distinct movement and targeting rules.
+5. Boss: Massive health, special abilities, and boss animations.
+
+Each enemy should have:
+- Health and maximum health.
+- Movement speed.
+- Armor or resistance.
+- Reward value.
+- Score value.
+- Unique animations.
+- Damage and death effects.
+- Appropriate health bars.
+
+Support additional enemy types through configuration rather than hardcoded logic.
+
+## 6. WAVE SYSTEM
+
+Implement a configurable wave progression system.
+
+Requirements:
+- At least 50 fully playable waves.
+- No hardcoded maximum of 50 waves.
+- Architecture must support unlimited additional configured or procedurally generated waves, subject to practical game balance and hardware limits.
+- Different enemy combinations.
+- Increasing enemy counts.
+- Increasing enemy strength.
+- Special enemy formations.
+- Elite enemies.
+- Boss encounters.
+- Final boss encounter in wave 50.
+- Extendable difficulty progression beyond wave 50.
+
+Suggested progression:
+- Waves 1–10: Basic enemies and learning.
+- Waves 11–20: Armored enemies and mixed formations.
+- Waves 21–30: Flying enemies and elite units.
+- Waves 31–40: Large armies and boss encounters.
+- Waves 41–49: Advanced combinations and difficult formations.
+- Wave 50: Final boss battle.
+- Wave 51 onward: Extendable endgame progression.
+
+Avoid relying exclusively on health multipliers. Introduce difficulty through enemy combinations, spawn timing, armor, speed, abilities, and boss mechanics.
+
+## 7. ECONOMY AND PROGRESSION
+
+Implement:
+- Starting gold.
+- Tower purchase costs.
+- Enemy kill rewards.
+- Upgrade costs.
+- Selling towers.
+- Score system.
+- Base health.
+- Wave completion rewards.
+- Boss rewards.
+- Game progression.
+
+All displayed values must reflect actual game state.
+
+Suggested initial balance:
+- Starting gold: 350.
+- Starting base health: 20.
+- Archer: 80.
+- Cannon: 140.
+- Mage: 160.
+- Frost: 110.
+- Tower selling returns approximately 65% of invested value.
+
+Treat these as initial balancing values, not permanent limitations.
+
+## 8. GAME UI AND CONTROLS
+
+Create a polished interface inspired by professional fantasy strategy games.
+
+Main menu:
+- Play.
+- Continue.
+- Level selection.
+- Settings.
+- Sound controls.
+
+In-game HUD:
+- Player health.
+- Gold.
+- Score.
+- Current wave.
+- Enemies remaining.
+- Pause button.
+- Restart button.
+- Speed controls: 1x, 2x, 3x.
+
+Left or bottom tower shop:
+- Tower icons.
+- Names.
+- Prices.
+- Short descriptions.
+- Selection states.
+
+Tower selection panel:
+- Tower name.
+- Tower level.
+- Damage.
+- Range.
+- Attack speed.
+- Special ability.
+- Upgrade button.
+- Sell button.
+
+Additional interface:
+- Minimap.
+- Wave-start notification.
+- Boss health bar.
+- Floating damage numbers.
+- Gold reward indicators.
+- Victory screen.
+- Game-over screen.
+- Settings and audio controls.
+
+Every button must perform its actual advertised action.
+
+Make the interface responsive while prioritizing a polished desktop gameplay experience.
+
+## 9. GAME ENGINE ARCHITECTURE
+
+Build a modular architecture.
+
+Suggested structure:
+
+src/
+  engine/
+    GameEngine.ts
+    GameLoop.ts
+    GameClock.ts
+    GameState.ts
+    GameConfig.ts
+
+  simulation/
+    EnemySystem.ts
+    TowerSystem.ts
+    ProjectileSystem.ts
+    CollisionSystem.ts
+    SpatialGrid.ts
+    WaveSystem.ts
+
+  entities/
+    EnemyStorage.ts
+    TowerStorage.ts
+    ProjectileStorage.ts
+    ObjectPool.ts
+
+  rendering/
+    PixiRenderer.ts
+    Battlefield.ts
+    SpriteManager.ts
+    AnimationManager.ts
+    EffectsRenderer.ts
+
+  gameplay/
+    Economy.ts
+    UpgradeSystem.ts
+    ScoreSystem.ts
+    SaveSystem.ts
+
+  ui/
+    MainMenu.tsx
+    GameHUD.tsx
+    TowerShop.tsx
+    UpgradePanel.tsx
+    Settings.tsx
+    GameResults.tsx
+
+  benchmark/
+    StressTest.ts
+    PerformanceMonitor.ts
+    MemoryMonitor.ts
+
+  App.tsx
+  main.tsx
+
+You may improve this structure when necessary, but preserve clear separation between rendering, simulation, gameplay, and UI.
+
+## 10. CRITICAL PERFORMANCE REQUIREMENTS
+
+Performance and scalability are essential.
+
+The following quantities are minimum stress-test targets, NOT maximum entity limits:
+
+- At least 5,000 simultaneously active enemies.
+- At least 100 simultaneously active towers.
+- At least 1,000 simultaneously active projectiles.
+
+Never introduce arbitrary hardcoded entity caps.
+
+Use dynamically growing storage, allocation strategies, and memory management so the game can support more entities when hardware permits.
+
+Implement:
+
+### Entity management
+- Structure of Arrays (SoA).
+- TypedArrays for frequently updated numerical data.
+- Object pooling and free-list allocation.
+- Dynamic buffer expansion.
+- Reuse inactive entity slots.
+- Avoid unnecessary object creation.
+
+### Simulation
+- One centralized fixed-timestep simulation loop.
+- Refresh-rate-independent behavior.
+- No individual timers or animation loops per entity.
+- Efficient enemy movement.
+- Efficient projectile processing.
+- Optimized collision detection.
+- Spatial hashing or spatial grid for target acquisition.
+- Avoid unnecessary repeated distance calculations.
+
+### Rendering
+- PixiJS sprite batching.
+- Texture atlases.
+- Viewport culling.
+- Sprite reuse.
+- Particle pooling.
+- Cached static terrain.
+- Level of detail where useful.
+- Avoid rendering invisible entities.
+
+Do not incorrectly remove active offscreen entities from gameplay simulation just because they are not visible.
+
+### Performance targets
+On a declared reference desktop/browser configuration, aim for:
+- At least 45 FPS for 95% of frames during the specified stress test.
+- Fewer than 5% of frames exceeding 33ms.
+- Stable memory during a complete 50-wave campaign.
+- Responsive mouse and keyboard interaction.
+- No progressive performance degradation caused by memory leaks.
+
+Create a benchmark mode that can generate the required simultaneous stress load.
+
+Measure actual performance. Do not claim that a target has been achieved without running the relevant benchmark.
+
+## 11. GAME LOOP AND TIME MANAGEMENT
+
+Implement a centralized game loop using requestAnimationFrame for rendering and a fixed simulation timestep, approximately 1/60 second.
+
+Use an accumulator and interpolation where appropriate.
+
+Support:
+- Pause and resume.
+- 1x, 2x, and 3x simulation speed.
+- Controlled catch-up steps after frame delays.
+- Refresh-rate-independent simulation.
+- Separate simulation and rendering responsibilities.
+
+Pausing must freeze gameplay simulation while allowing necessary interface updates.
+
+## 12. OFFLINE SUPPORT
+
+The game must be playable offline after its assets and application have been loaded.
+
+Implement:
+- Local asset storage or bundled assets.
+- Local save data.
+- Offline-capable application loading.
+- No required external APIs.
+- No mandatory server connection.
+- Optional PWA/service worker caching.
+
+Do not make gameplay depend on a third-party service.
+
+## 13. DEVELOPMENT WORKFLOW
+
+Develop the project in the following phases.
+
+PHASE 1: Project setup, battlefield, renderer, game loop, enemy pathfinding, initial HUD.
+
+PHASE 2: Tower placement, enemy targeting, projectile system, collision and damage.
+
+PHASE 3: Economy, tower upgrades, selling, score and base health.
+
+PHASE 4: Four tower types and five enemy types with unique mechanics.
+
+PHASE 5: Wave system and 50+ wave campaign.
+
+PHASE 6: Main menu, minimap, settings, pause, speed controls, victory and defeat screens.
+
+PHASE 7: Graphics, animation, audio, particles and UI polish.
+
+PHASE 8: Stress testing, optimization, memory management and performance profiling.
+
+PHASE 9: Full gameplay testing, balancing, offline verification and production build.
+
+## 14. STRICT DEVELOPMENT RULES
+
+Follow these instructions throughout development:
+
+1. First inspect the current project directory before modifying anything.
+2. If the project is empty, create the project and install dependencies.
+3. If an existing project exists, understand its structure before changing files.
+4. Do not generate the entire game as one giant component or source file.
+5. Implement features in small, logically complete modules.
+6. Write clean, strongly typed, maintainable TypeScript.
+7. Do not use fake buttons or placeholder gameplay logic.
+8. Do not use static screenshots as the actual game.
+9. Do not hardcode a 50-wave maximum.
+10. Do not hardcode the stress-test entity counts as capacity limits.
+11. Do not remove existing working features while implementing new ones.
+12. Run the development server and verify the actual application.
+13. Fix TypeScript errors, runtime errors, and broken interactions.
+14. Test each phase before proceeding.
+15. Keep documentation updated.
+16. Clearly identify features that are implemented, tested, and still incomplete.
+17. Never report performance benchmarks as successful unless they have actually been measured.
+
+## 15. FIRST TASK: START PHASE 1
+
+Do not attempt to generate every phase simultaneously.
+
+Start by inspecting the project and then implement Phase 1 completely.
+
+Your first deliverable must include:
+
+- Complete project initialization.
+- Dependency installation.
+- Modular folder structure.
+- PixiJS battlefield renderer.
+- Fantasy battlefield environment.
+- Winding enemy path.
+- Castle/base.
+- Enemy spawning and movement.
+- Central fixed-timestep game loop.
+- Basic HUD with health, gold and wave.
+- Initial performance monitoring.
+- Working development server.
+
+After implementation:
+1. Run the project.
+2. Check for errors.
+3. Verify that enemies actually move along the path.
+4. Verify that the HUD displays the current game state.
+5. Report the files created and modified.
+6. Provide exact commands to run the game.
+7. List what has been tested and what remains.
+
+Then stop and wait for approval before starting Phase 2.
+
+FINAL OBJECTIVE:
+
+Deliver a professional, visually polished, scalable, fully playable fantasy Tower Defense Game with at least 50 waves, extensible content, genuine gameplay systems, offline support, and measurable high-performance behavior.
+
+Prioritize functional correctness, maintainability, gameplay quality, and scalability over superficial visual effects.
